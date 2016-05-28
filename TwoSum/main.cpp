@@ -42,6 +42,27 @@ public:
         }
     }
 
+    void test(){
+        unsigned int a = 5;
+        unsigned int *pint = NULL;
+        cout << "&a" << &a << endl << " a="<<a << endl;
+        cout << "&pint" << &pint << endl << " pint="<< pint << endl;
+        cout << "&(*pint)" << &(*pint) << endl << endl;
+        cout << "*(&pint)" << *(&pint) << endl << endl;
+
+        pint = &a;
+        cout << "&a" << &a << endl << " a="<<a << endl;
+        cout << "&pint" << &pint << endl << " pint="<< pint << endl;
+        cout << "&(*pint)" << &(*pint) << endl << endl;
+        cout << "*(&pint)" << *(&pint) << endl << endl;
+
+        *pint = 10;
+        cout << "&a" << &a << endl << " a="<<a << endl;
+        cout << "&pint" << &pint << endl << " pint="<< pint << endl;
+        cout << "&(*pint)" << &(*pint) << endl << endl;
+        cout << "*(&pint)" << *(&pint) << endl << endl;
+    }
+
 };
 
 int main() {
@@ -52,5 +73,6 @@ int main() {
     for (int i = 0; i < s.ret.size(); ++i) {
         cout << s.ret[i] << endl;
     }
+    s.test();
     return 0;
 }
