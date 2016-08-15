@@ -19,19 +19,31 @@ public:
 void createTree(TreeNode *&root)
 {
     int val;
-    cin << val;
+    cin >> val;
     if(val == 0) {
-        root = null;
+        root = NULL;
     }else {
         root = new TreeNode();
-        root.val = val;
+        root->val = val;
         createTree(root->left);
         createTree(root->right);
     }
 }
 
+void printTree(TreeNode *root)
+{
+    if(root == NULL){
+        return;
+    }
+    cout << root->val;
+    printTree(root->left);
+    printTree(root->right);
+}
+
 int main() {
-    TreeNode root;
+    TreeNode *root;
     createTree(root);
+    printTree(root);
+
     return 0;
 }
