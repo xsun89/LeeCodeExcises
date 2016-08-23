@@ -74,6 +74,24 @@ void printTree(TreeNode *root)
     printTree(root->right);
 }
 
+void getSerilizedTree(TreeNode* root, string &tmp)
+{
+    if(root == NULL){
+        tmp += "#!";
+        return;
+    }
+    tmp += to_string(root->val) + "!";
+    getSerilizedTree(root->left, tmp);
+    getSerilizedTree(root->right, tmp);
+
+    return;
+
+}
+
+void createSerilizedTree(TreeNode* root, string &tmp)
+{
+
+}
 void destroyTree(TreeNode *root)
 {
     if(root !=  NULL) {
@@ -116,6 +134,9 @@ int main() {
     printTree(root);
     TreePrinter p;
     p.printTree(root);
+    string tmp;
+    getSerilizedTree(root, tmp);
+    cout << "Seri=" << tmp << endl;
     destroyTree(root);
     return 0;
 }
