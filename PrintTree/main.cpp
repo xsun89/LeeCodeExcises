@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <sstream>
+#include <regex>
 
 using namespace std;
 
@@ -88,9 +90,32 @@ void getSerilizedTree(TreeNode* root, string &tmp)
 
 }
 
+vector<string> getSplitString(string &str, string &strok){
+    // Replace each colon with a single space
+    const regex pattern(strok);
+    const string r = regex_replace(str, pattern, " ");
+
+    cout << "after regex=" << r <<endl;
+
+    std::istringstream ist(r);
+
+    std::vector<string> numbers;
+    std::copy(std::istream_iterator<string>(ist), std::istream_iterator<string>(),
+              std::back_inserter(numbers));
+
+    return numbers;
+
+}
 void createSerilizedTree(TreeNode* root, string &tmp)
 {
+    string st = string("!");
+    vector<string> ret = getSplitString(tmp, st);
 
+    for (string n : ret)
+    {
+        std::cout << n << " ";
+    }
+    std::cout << std::endl;
 }
 void destroyTree(TreeNode *root)
 {
@@ -137,6 +162,9 @@ int main() {
     string tmp;
     getSerilizedTree(root, tmp);
     cout << "Seri=" << tmp << endl;
+
+    TreeNode *root2 = new TreeNode();
+    createSerilizedTree(root2, tmp);
     destroyTree(root);
     return 0;
 }

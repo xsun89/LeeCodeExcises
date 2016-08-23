@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/TwoSum/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/PrintTree/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/PrintTree/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/StlExample/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/StlExample/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
