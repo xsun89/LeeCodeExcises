@@ -1,9 +1,7 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-using namespace std;
 
 int isMatch(const char* s, const char* p)
 {
@@ -34,11 +32,39 @@ int isMatch(const char* s, const char* p)
         return -1;
 }
 
-int main() {
-    const char *s = "BBC ABCDAB ABCDABCDABDE";
-    const char *t = "ABCDABD";
+void reverseArray(char *p, int len)
+{
+    char tmp = '\0';
+    for(int i=0; i<len/2; i++){
+        tmp = *(p + i);
+        char tail = *(p+len-i-1);
+        *(p+i) = *(p+len-i-1);
+        *(p+len-i-1) = tmp;
+    }
+}
 
+void revserReverseArray(char *p)
+{
+    int len = strlen(p);
+    for(int i=0; i<len; i++){
+        char *tmp = p;
+
+    }
+}
+int main() {
+
+    const char* base = "BBC ABCDAB ABCDABCDABDE";
+    const char* forCompare = "ABCDABD";
+    char *s = (char *) malloc(strlen(base) + 1);
+    memset(s, '\0', strlen(base)+1);
+    char *t = (char *) malloc(strlen(forCompare) + 1);
+    memset(t, '\0', strlen(forCompare)+1);
+    strcpy(s, base);
+    strcpy(t, forCompare);
     int ret = isMatch(s, t);
-    cout << ret;
+    printf("%d\n", ret);
+    reverseArray(s, strlen(s));
+    printf("%s\n", s);
+
     return 0;
 }

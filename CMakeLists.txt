@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.4)
+cmake_minimum_required(VERSION 3.6.1)
 project(LeeCodeExcise)
 
 add_subdirectory(TwoSum)
