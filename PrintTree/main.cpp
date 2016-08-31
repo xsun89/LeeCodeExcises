@@ -3,6 +3,7 @@
 #include <queue>
 #include <sstream>
 #include <regex>
+#include <stack>
 
 using namespace std;
 
@@ -51,6 +52,8 @@ public:
         return out;
     }
 };
+
+void createTreeByStack(TreeNode *pNode, stack<string, deque<string, allocator<string>>> *pStack);
 
 void createTree(TreeNode *&root)
 {
@@ -106,17 +109,43 @@ vector<string> getSplitString(string &str, string &strok){
     return numbers;
 
 }
-void createSerilizedTree(TreeNode* root, string &tmp)
+
+int convertStringToInt(string &str)
+{
+    istringstream ss(str);
+    int val;
+    ss >> val;
+
+    return val;
+}
+
+void createTreeByQueue(TreeNode *&root, queue<string> *pQueue) {
+    if(pQueue->empty()) {
+        delete pQueue;
+        return;
+    }
+    string first = pQueue->front();
+    pQueue->pop();
+    if(first == "#") {
+        return;
+    }else {
+        root = new TreeNode();
+        root->val = convertStringToInt(first);
+        createTreeByQueue(root->left, pQueue);
+        createTreeByQueue(root->right, pQueue);
+    }
+}
+void createSerilizedTree(TreeNode *&root, string &tmp)
 {
     string st = string("!");
     vector<string> ret = getSplitString(tmp, st);
-
-    for (string n : ret)
-    {
-        std::cout << n << " ";
+    queue<string>* que = new queue<string>();
+    for(string n: ret){
+        que->push(n);
     }
-    std::cout << std::endl;
+    createTreeByQueue(root, que);
 }
+
 void destroyTree(TreeNode *root)
 {
     if(root !=  NULL) {
@@ -131,9 +160,13 @@ void destroyTree(TreeNode *root)
 int main() {
     TreeNode *root = new TreeNode();
     root->val = 1;
+
+
     TreeNode* tmpLeft = new TreeNode();
     tmpLeft->val = 2;
     root->left = tmpLeft;
+
+
     TreeNode* tempRight = new TreeNode();
     tempRight->val = 3;
     root->right = tempRight;
@@ -163,8 +196,10 @@ int main() {
     getSerilizedTree(root, tmp);
     cout << "Seri=" << tmp << endl;
 
-    TreeNode *root2 = new TreeNode();
+    TreeNode *root2; //= new TreeNode();
     createSerilizedTree(root2, tmp);
+    p.printTree(root2);
     destroyTree(root);
+    destroyTree(root2);
     return 0;
 }
