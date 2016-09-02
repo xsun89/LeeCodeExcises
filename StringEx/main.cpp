@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 
 int isMatch(const char* s, const char* p)
@@ -32,28 +33,43 @@ int isMatch(const char* s, const char* p)
         return -1;
 }
 
-void reverseArray(char *p, int len)
+void reverseArray(char *p, int start, int end)
 {
-    char tmp = '\0';
+    printf("star process %s from %d to %d\n", p, start, end);
+    char tmp;
+    int len = end - start;
     for(int i=0; i<len/2; i++){
-        tmp = *(p + i);
-        char tail = *(p+len-i-1);
-        *(p+i) = *(p+len-i-1);
-        *(p+len-i-1) = tmp;
+        tmp = *(p + start + i);
+        char tail = *(p+start+len-i-1);
+        printf("rev %c %c\n", tmp, tail);
+        *(p+start+i) = *(p+start+len-i-1);
+        *(p+start+len-i-1) = tmp;
     }
 }
 
 void revserReverseArray(char *p)
 {
     int len = strlen(p);
-    for(int i=0; i<len; i++){
-        char *tmp = p;
-
+    int start = 0;
+    int end = 0;
+    int revlen = 0;
+    for(int i=0; i<len+1; i++){
+        printf("end %c\n", p[i]);
+        if(!isspace(p[i]) && p[i] != '\0'){
+            printf("end %d\n", end);
+            end++;
+        }else {
+            reverseArray(p, start, end);
+            printf("after %d\n", start);
+            start = i + 1;
+            end++;
+            printf("new start %d\n", start);
+        }
     }
 }
 int main() {
 
-    const char* base = "BBC ABCDAB ABCDABCDABDE";
+    const char* base = "BBC  ABCDAB  ABCDABCDABDE";
     const char* forCompare = "ABCDABD";
     char *s = (char *) malloc(strlen(base) + 1);
     memset(s, '\0', strlen(base)+1);
@@ -63,8 +79,9 @@ int main() {
     strcpy(t, forCompare);
     int ret = isMatch(s, t);
     printf("%d\n", ret);
-    reverseArray(s, strlen(s));
+    reverseArray(s, 0, strlen(s));
     printf("%s\n", s);
-
+    revserReverseArray(s);
+    printf("%s\n", s);
     return 0;
 }

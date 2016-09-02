@@ -2,12 +2,12 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/PrintTree/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/PrintTree/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/StringEx/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/StringEx/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TwoSum/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TwoSum/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/StringEx/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/StringEx/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PrintTree/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PrintTree/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/StlExample/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/StlExample/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
