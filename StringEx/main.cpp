@@ -37,13 +37,14 @@ void reverseArray(char *p, int start, int end)
 {
     printf("star process %s from %d to %d\n", p, start, end);
     char tmp;
+    char tail;
     int len = end - start;
     for(int i=0; i<len/2; i++){
         tmp = *(p + start + i);
-        char tail = *(p+start+len-i-1);
+        tail = *(p+end-i);
         printf("rev %c %c\n", tmp, tail);
-        *(p+start+i) = *(p+start+len-i-1);
-        *(p+start+len-i-1) = tmp;
+        *(p+start+i) = *(p+end-i);
+        *(p+end-i) = tmp;
     }
 }
 
@@ -53,9 +54,9 @@ void revserReverseArray(char *p)
     int start = 0;
     int end = 0;
     int revlen = 0;
-    for(int i=0; i<len+1; i++){
+    for(int i=0; i<len; i++){
         printf("end %c\n", p[i]);
-        if(!isspace(p[i]) && p[i] != '\0'){
+        if(!isspace(p[i])){
             printf("end %d\n", end);
             end++;
         }else {
@@ -69,8 +70,10 @@ void revserReverseArray(char *p)
 }
 int main() {
 
-    const char* base = "BBC  ABCDAB  ABCDABCDABDE";
-    const char* forCompare = "ABCDABD";
+    //const char* base = "BBC  ABCDAB  ABCDABCDABDE";
+    const char* base = "pig loves dog";
+    //const char* forCompare = "ABCDABD";
+    const char* forCompare = "ABCDE";
     char *s = (char *) malloc(strlen(base) + 1);
     memset(s, '\0', strlen(base)+1);
     char *t = (char *) malloc(strlen(forCompare) + 1);
@@ -79,9 +82,17 @@ int main() {
     strcpy(t, forCompare);
     int ret = isMatch(s, t);
     printf("%d\n", ret);
-    reverseArray(s, 0, strlen(s));
+    reverseArray(s, 0, strlen(s)-1);
     printf("%s\n", s);
     revserReverseArray(s);
     printf("%s\n", s);
+
+    reverseArray(t, 0, 2);
+    printf("%s\n", t);
+    reverseArray(t, 3, strlen(t)-1);
+    printf("%s\n", t);
+    reverseArray(t, 0, strlen(t)-1);
+
+    printf("%s\n", t);
     return 0;
 }
