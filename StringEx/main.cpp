@@ -83,6 +83,7 @@ int main() {
     int ret = isMatch(s, t);
     printf("%d\n", ret);
     reverseArray(s, 0, strlen(s)-1);
+
     printf("%s\n", s);
     revserReverseArray(s);
     printf("%s\n", s);
