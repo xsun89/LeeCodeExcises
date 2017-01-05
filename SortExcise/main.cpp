@@ -2,6 +2,7 @@
 
 
 using namespace std;
+int temp[100];
 
 void maopaosortArray(int* arr, int length){
     int temp;
@@ -16,9 +17,28 @@ void maopaosortArray(int* arr, int length){
     }
 }
 
-void gueibinMerge(int* arr, int low, int high)
+void gueibinMerge(int* arr, int low, int mid, int high)
 {
+    int i = low;
+    int j = mid + 1;
+    int size = 0;
+    for(;i<=mid && j<=high; size++){
+        if(arr[i] < arr[j]){
+            temp[size] = arr[i++];
+        }else{
+            temp[size] = arr[j++];
+        }
+    }
+    while(i<=mid){
+        temp[size++] = arr[i++];
+    }
+    while(j<=high){
+        temp[size++] = arr[j++];
+    }
 
+    for(i=0; i<size; i++){
+        arr[low+i] = temp[i];
+    }
 }
 
 void gueibinSort(int* arr, int low, int high)
@@ -30,7 +50,7 @@ void gueibinSort(int* arr, int low, int high)
 
     gueibinSort(arr, low, mid);
     gueibinSort(arr, mid+1, high);
-    gueibinMerge(arr, low, high);
+    gueibinMerge(arr, low, mid, high);
 
 }
 
@@ -38,7 +58,8 @@ void gueibinSort(int* arr, int low, int high)
 int main() {
     int arr[] = {10, 23, 56, 43, 25, 12, 5, 29, 41, 2};
     int len = sizeof(arr)/sizeof(*arr);
-    maopaosortArray(arr, len);
+    //maopaosortArray(arr, len);
+    gueibinSort(arr, 0, 9);
     for (int i = 0; i < len; ++i) {
         cout << arr[i] << endl;
     }
