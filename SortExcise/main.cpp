@@ -55,7 +55,8 @@ void gueibinSort(int* arr, int low, int high)
 }
 
 
-int main() {
+int main()
+{
     int arr[] = {10, 23, 56, 43, 25, 12, 5, 29, 41, 2};
     int len = sizeof(arr)/sizeof(*arr);
     //maopaosortArray(arr, len);
